@@ -13,4 +13,9 @@ public abstract class Posto
     {
         this.ID = ID;
     }
+
+    public boolean equals(Posto p)
+    {
+        return p.getID() == this.getID();
+    }
 }

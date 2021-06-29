@@ -1,5 +1,3 @@
-import java.io.File;
-
 public class DABUTTARE
 {
     public static void main(String[] args)
@@ -18,7 +16,7 @@ public class DABUTTARE
         TransizioneN t3 = new TransizioneN(2);
         ElementoN e3 = new ElementoN(p3, t3, false);
 
-        ReteN r = new ReteN();
+        Rete r = new Rete();
         r.add(e1);
         r.add(e2);
         r.add(e3);

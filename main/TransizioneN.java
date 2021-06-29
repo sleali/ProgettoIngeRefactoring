@@ -4,9 +4,4 @@ public class TransizioneN extends Transizione
     {
         super(ID);
     }
-
-    public boolean equals(Transizione t)
-    {
-        return t.getID() == this.getID();
-    }
 }

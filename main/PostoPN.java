@@ -12,11 +12,6 @@ public class PostoPN extends Posto
         this.marcatura=0;
     }
 
-    public boolean equals(PostoPN p)
-    {
-        return false;
-    }
-
     public void setMarcatura(int marcatura) {
         this.marcatura=marcatura;
     }

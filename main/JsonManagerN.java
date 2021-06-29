@@ -17,7 +17,7 @@ public class JsonManagerN extends PersistentManager
     @Override
     protected Rete getRete()
     {
-        return new ReteN();
+        return new Rete();
     }
 
     @Override

@@ -80,9 +80,12 @@ public class RepositoryN implements NetRepository
         });
         for (int i = 0; i < names.length && !find; i++)
         {
-            Rete reteEsistente = persistentManager.load(names[i]);
-            if (retePar.equals(reteEsistente))
+            System.out.println(names[i]);
+            Rete reteEsistente = persistentManager.load(DIRECTORY + names[i]);
+            if (retePar.equals(reteEsistente)) {
+                System.out.println("entro");
                 find = true;
+            }
         }
         return find;
     }

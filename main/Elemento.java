@@ -1,7 +1,7 @@
 public abstract class Elemento
 {
-    protected Posto p;
-    protected Transizione t;
+    private Posto p;
+    private Transizione t;
     private boolean verso;
 
     public final static boolean DA_POSTO_A_TRANSAZIONE = true;
@@ -41,7 +41,7 @@ public abstract class Elemento
     {
         return this.t;
     }
-    public boolean equals(Elemento el)
+    public final boolean equals(Elemento el)
     {
         if(this.verso == el.getVerso() && this.p.equals(el.getPosto()) && this.t.equals(el.getTransazione()))
             return true;
