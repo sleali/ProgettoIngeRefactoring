@@ -13,5 +13,4 @@ public abstract class Posto
     {
         this.ID = ID;
     }
-    public abstract boolean equals(Posto p);
 }

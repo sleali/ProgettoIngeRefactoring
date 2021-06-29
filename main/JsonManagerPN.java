@@ -2,10 +2,6 @@ import com.google.gson.Gson;
 
 public class JsonManagerPN extends PersistentManager
 {
-    public JsonManagerPN(String directory) {
-        super(directory);
-    }
-
     @Override
     protected Gson createGson() {
         return null;

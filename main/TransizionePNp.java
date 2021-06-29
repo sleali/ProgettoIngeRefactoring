@@ -4,9 +4,4 @@ public class TransizionePNp extends Transizione
     {
         super(ID);
     }
-    @Override
-    public boolean equals(Transizione t)
-    {
-        return false;
-    }
 }

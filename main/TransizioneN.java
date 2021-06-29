@@ -4,7 +4,7 @@ public class TransizioneN extends Transizione
     {
         super(ID);
     }
-    @Override
+
     public boolean equals(Transizione t)
     {
         return t.getID() == this.getID();

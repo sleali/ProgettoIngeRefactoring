@@ -2,12 +2,6 @@ import com.google.gson.*;
 
 public class JsonManagerN extends PersistentManager
 {
-    private static final String DIRECTORY = "./salvataggi/retiN/";
-    public JsonManagerN()
-    {
-        super(DIRECTORY);
-    }
-
     //applicazione del metodo template: in questa classe vi è la definizione delle primitive
     @Override
     public Gson createGson()

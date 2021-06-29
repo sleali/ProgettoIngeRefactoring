@@ -11,5 +11,4 @@ public abstract class Transizione
     public void setID(int ID) {
         this.ID = ID;
     }
-    public abstract boolean equals(Transizione t);
 }

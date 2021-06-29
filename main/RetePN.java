@@ -1,4 +1,14 @@
-public class RetePN implements Rete{
+import java.util.ArrayList;
+
+public class RetePN implements Rete
+{
+    private ArrayList<Elemento> elementi;
+
+    public RetePN()
+    {
+        elementi = new ArrayList<>();
+    }
+
     @Override
     public boolean add(Elemento el) {
         return false;

@@ -3,19 +3,12 @@ import java.io.*;
 
 public abstract class PersistentManager
 {
-    private String directory;
-
-    public PersistentManager(String directory)
-    {
-        checkDirectory();
-        this.directory = directory;
-    }
     public final boolean save(Rete r, String fileName)
     {
         boolean save = false;
         if (r.size() > 0) {
             try {
-                File f = new File(directory + fileName + ".json");
+                File f = new File(fileName + ".json");
                 for(int i = 1; f.exists() && !f.isDirectory(); i++)
                 {
                     f = new File(fileName + "(" + i + ")" + ".json");
@@ -61,26 +54,6 @@ public abstract class PersistentManager
             exp.printStackTrace();
         }
         return r;
-    }
-
-    private void checkDirectory() {
-        File directory = new File("./salvataggi");
-        File directoryN = new File("./salvataggi/retiN");
-        File directoryPN = new File("./salvataggi/retiPN");
-        File directoryPNP = new File("./salvataggi/retiPNP");
-
-        if (!directory.isDirectory()) {
-            directory.mkdir();
-            if (!directoryN.isDirectory()) {
-                directoryN.mkdir();
-            }
-            if (!directoryPN.isDirectory()) {
-                directoryPN.mkdir();
-            }
-            if (!directoryPNP.isDirectory()) {
-                directoryPNP.mkdir();
-            }
-        }
     }
 
     protected abstract Gson createGson();

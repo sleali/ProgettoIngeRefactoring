@@ -12,6 +12,7 @@ public class RepositoryN implements NetRepository
     {
         retiN = new ArrayList<Rete>();
         persistentManager = new JsonManagerN();
+        this.checkDirectory();
     }
 
     @Override
@@ -42,7 +43,7 @@ public class RepositoryN implements NetRepository
     {
         boolean saved = false;
         Rete r = this.getRete(index);
-        saved = this.persistentManager.save(r, filename);
+        saved = this.persistentManager.save(r, DIRECTORY + filename);
         return saved;
     }
 
@@ -50,7 +51,7 @@ public class RepositoryN implements NetRepository
     public boolean load(String fileName)
     {
         boolean loaded = false;
-        Rete r = this.persistentManager.load(fileName);
+        Rete r = this.persistentManager.load(DIRECTORY + fileName);
         if(r != null)
         {
             loaded = this.retiN.add(r);
@@ -79,11 +80,31 @@ public class RepositoryN implements NetRepository
         });
         for (int i = 0; i < names.length && !find; i++)
         {
-            Rete reteEsistente = persistentManager.load(DIRECTORY + names[i]);
+            Rete reteEsistente = persistentManager.load(names[i]);
             if (retePar.equals(reteEsistente))
                 find = true;
         }
         return find;
+    }
+
+    private void checkDirectory() {
+        File directory = new File("./salvataggi");
+        File directoryN = new File(DIRECTORY);
+        //File directoryPN = new File("./salvataggi/retiPN");
+        //File directoryPNP = new File("./salvataggi/retiPNP");
+
+        if (!directory.isDirectory()) {
+            directory.mkdir();
+            if (!directoryN.isDirectory()) {
+                directoryN.mkdir();
+            }
+            /*if (!directoryPN.isDirectory()) {
+                directoryPN.mkdir();
+            }
+            if (!directoryPNP.isDirectory()) {
+                directoryPNP.mkdir();
+            }*/
+        }
     }
 
     @Override
