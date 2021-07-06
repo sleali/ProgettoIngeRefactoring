@@ -15,12 +15,6 @@ public class JsonManagerN extends PersistentManager
     }
 
     @Override
-    protected Rete getRete()
-    {
-        return new Rete();
-    }
-
-    @Override
     protected Elemento getElementFromJson(String s, Gson gson)
     {
         return gson.fromJson(s, ElementoN.class);

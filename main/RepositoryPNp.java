@@ -5,11 +5,6 @@ public class RepositoryPNp implements NetRepository{
     }
 
     @Override
-    public void remove(int index) {
-
-    }
-
-    @Override
     public Rete getRete(int index) {
         return null;
     }

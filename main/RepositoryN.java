@@ -28,12 +28,6 @@ public class RepositoryN implements NetRepository
     }
 
     @Override
-    public void remove(int index)
-    {
-        this.retiN.remove(index);
-    }
-
-    @Override
     public Rete getRete(int index) {
         return this.retiN.get(index);
     }
@@ -80,12 +74,9 @@ public class RepositoryN implements NetRepository
         });
         for (int i = 0; i < names.length && !find; i++)
         {
-            System.out.println(names[i]);
             Rete reteEsistente = persistentManager.load(DIRECTORY + names[i]);
-            if (retePar.equals(reteEsistente)) {
-                System.out.println("entro");
+            if (retePar.equals(reteEsistente))
                 find = true;
-            }
         }
         return find;
     }
@@ -93,20 +84,12 @@ public class RepositoryN implements NetRepository
     private void checkDirectory() {
         File directory = new File("./salvataggi");
         File directoryN = new File(DIRECTORY);
-        //File directoryPN = new File("./salvataggi/retiPN");
-        //File directoryPNP = new File("./salvataggi/retiPNP");
 
         if (!directory.isDirectory()) {
             directory.mkdir();
             if (!directoryN.isDirectory()) {
                 directoryN.mkdir();
             }
-            /*if (!directoryPN.isDirectory()) {
-                directoryPN.mkdir();
-            }
-            if (!directoryPNP.isDirectory()) {
-                directoryPNP.mkdir();
-            }*/
         }
     }
 

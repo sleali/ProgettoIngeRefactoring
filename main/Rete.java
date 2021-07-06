@@ -3,14 +3,41 @@ import java.util.ArrayList;
 public class Rete
 {
     private ArrayList<Elemento> elementi;
+    private ArrayList<Posto> posti;
+    private ArrayList<Transizione> transazioni;
     public Rete()
     {
+
+        posti = new ArrayList<>();
+        transazioni = new ArrayList<>();
         elementi = new ArrayList<>();
     }
-
-    public boolean add(Elemento el)
+    
+    public boolean addPosto(Posto p)
     {
-        if(!alreadyExist(el))
+        if(!alreadyExistsPosto(p))
+        {
+            posti.add(p);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean addTransizione(Transizione t)
+    {
+        if(!alreadyExistsTransizione(t))
+        {
+            transazioni.add(t);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean addElemento(Elemento el)
+    {
+        if(!alreadyExistsElemento(el))
         {
             elementi.add(el);
             return true;
@@ -19,9 +46,22 @@ public class Rete
             return false;
     }
 
-    public void remove(int index)
+    public void removePosto(int index)
     {
-        elementi.remove(index);
+        if(index >= 0 && index < this.posti.size())
+            this.posti.remove(index);
+    }
+
+    public void removeTransizione(int index)
+    {
+        if(index >= 0 && index < this.transazioni.size())
+            this.transazioni.remove(index);
+    }
+
+    public void removeElemento(int index)
+    {
+        if(index >= 0 && index < this.elementi.size())
+            elementi.remove(index);
     }
 
     public Elemento getElement(int index)
@@ -29,12 +69,42 @@ public class Rete
         return this.elementi.get(index);
     }
 
+    public Posto getPosto(int index)
+    {
+        return this.posti.get(index);
+    }
+
+    public Transizione getTransizione(int index)
+    {
+        return this.transazioni.get(index);
+    }
+
     public int size()
     {
         return this.elementi.size();
     }
 
-    public boolean alreadyExist(Elemento el)
+    public boolean alreadyExistsPosto(Posto p)
+    {
+        boolean exist = false;
+        for (Posto posto : posti) {
+            if (posto.equals(p))
+                exist = true;
+        }
+        return exist;
+    }
+
+    public boolean alreadyExistsTransizione(Transizione t)
+    {
+        boolean exist = false;
+        for (Transizione transizione : transazioni) {
+            if (transizione.equals(t))
+                exist = true;
+        }
+        return exist;
+    }
+
+    public boolean alreadyExistsElemento(Elemento el)
     {
         boolean exist = false;
         for (Elemento elemento : elementi) {
@@ -57,7 +127,7 @@ public class Rete
                 {
                     if(this.getElement(i).equals(r.getElement(k)))
                     {
-                        r.remove(k);
+                        r.removeElemento(k);
                         find = true;
                     }
                 }
@@ -70,5 +140,19 @@ public class Rete
             else
                 return false;
         }
+    }
+
+    public static Rete convertToretePN(Rete r, int marcature[], int pesi[])
+    {
+        Rete rPN = new Rete();
+        ElementoN elN;
+        ElementoPN elPN;
+        for(int i = 0; i < r.size(); i++)
+        {
+            elN = (ElementoN) r.getElement(i);
+            elPN = elN.convertToElementoPN(marcature[i], pesi[i]);
+            rPN.addElemento(elPN);
+        }
+        return rPN;
     }
 }

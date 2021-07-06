@@ -36,7 +36,7 @@ public abstract class PersistentManager
     {
         String s;
         Elemento e;
-        Rete r = getRete(); //primitiva pattern template
+        Rete r = new Rete();
         Gson gson = createGson();
         File f = new File(fileName);
         BufferedReader source;
@@ -46,7 +46,9 @@ public abstract class PersistentManager
                 s = source.readLine();
                 if (!(s == null)) {
                     e = getElementFromJson(s, gson); //primitiva pattern template
-                    r.add(e);
+                    r.addElemento(e);
+                    r.addPosto(e.getPosto());
+                    r.addTransizione(e.getTransazione());
                 }
             } while (!(s == null));
             source.close();
@@ -57,6 +59,5 @@ public abstract class PersistentManager
     }
 
     protected abstract Gson createGson();
-    protected abstract Rete getRete();
     protected abstract Elemento getElementFromJson(String s, Gson gson);
 }
