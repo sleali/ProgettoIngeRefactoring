@@ -8,8 +8,8 @@ public class JsonManagerN extends PersistentManager
     {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(ElementoN.class, new ElementoNCreator());
-        gsonBuilder.registerTypeAdapter(Posto.class, new PostoCreator());
-        gsonBuilder.registerTypeAdapter(Transizione.class, new TransizioneCreator());
+        gsonBuilder.registerTypeAdapter(Posto.class, new PostoNCreator());
+        gsonBuilder.registerTypeAdapter(Transizione.class, new TransizioneNCreator());
         Gson gson = gsonBuilder.create();
         return gson;
     }

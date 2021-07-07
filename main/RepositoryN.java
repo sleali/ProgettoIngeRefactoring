@@ -53,6 +53,17 @@ public class RepositoryN implements NetRepository
         return loaded;
     }
 
+    public boolean importRete(String pathName)
+    {
+        boolean correct = false;
+        Rete rN = this.persistentManager.load(pathName);
+        if(rN != null)
+        {
+            correct = this.retiN.add(rN);
+        }
+        return correct;
+    }
+
     @Override
     public boolean checkDuplicate(Rete retePar)
     {
@@ -81,16 +92,15 @@ public class RepositoryN implements NetRepository
         return find;
     }
 
-    private void checkDirectory() {
+    private void checkDirectory()
+    {
         File directory = new File("./salvataggi");
-        File directoryN = new File(DIRECTORY);
+        File directoryPN = new File(DIRECTORY);
 
-        if (!directory.isDirectory()) {
+        if (!directory.isDirectory())
             directory.mkdir();
-            if (!directoryN.isDirectory()) {
-                directoryN.mkdir();
-            }
-        }
+        if (!directoryPN.isDirectory())
+            directoryPN.mkdir();
     }
 
     @Override

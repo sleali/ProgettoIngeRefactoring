@@ -20,4 +20,9 @@ public class PostoPN extends Posto
         return marcatura;
     }
 
+    public PostoN convertToPostoN()
+    {
+        return new PostoN(this.getID());
+    }
+
 }

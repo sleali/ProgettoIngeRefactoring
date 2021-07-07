@@ -1,8 +1,7 @@
 import com.google.gson.InstanceCreator;
-
 import java.lang.reflect.Type;
 
-public class TransizioneCreator implements InstanceCreator
+public class TransizioneNCreator implements InstanceCreator
 {
     @Override
     public Transizione createInstance(Type type) {
