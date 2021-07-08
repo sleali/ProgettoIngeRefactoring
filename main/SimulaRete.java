@@ -1,2 +1,4 @@
-public interface SimulaRete {
+public interface SimulaRete
+{
+
 }

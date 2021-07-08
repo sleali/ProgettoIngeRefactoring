@@ -84,6 +84,16 @@ public class Rete
         return this.elementi.size();
     }
 
+    public int postiSize()
+    {
+        return this.posti.size();
+    }
+
+    public int TransizioniSize()
+    {
+        return this.transazioni.size();
+    }
+
     public boolean alreadyExistsPosto(Posto p)
     {
         boolean exist = false;
