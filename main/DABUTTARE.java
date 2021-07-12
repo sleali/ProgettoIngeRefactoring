@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class DABUTTARE
 {
 
@@ -56,7 +58,7 @@ public class DABUTTARE
         /*------------------------------------------------------
         * test rete PN*/
 
-        /*NetRepository retiPN = new RepositoryPN();
+        NetRepository retiPN = new RepositoryPN();
         Rete r = new Rete();
         FactoryElementoPN factory = new FactoryElementoPN(r);
 
@@ -90,7 +92,16 @@ public class DABUTTARE
         System.out.println(r.addElemento(e3));
 
         retiPN.add(r);
-        System.out.println(retiPN.size());
+
+        String fileName = "/Users/davide/IdeaProjects/ProgettoIngeRefactoring/salvataggi/retiPN/prova1.json";
+        File f = new File(fileName);
+        /*ElementoPN el;
+        for(int i = 0; i < r.size(); i++)
+        {
+            el = (ElementoPN) r.getElement(i);
+            JsonPN.writeElemento(el, f);
+        }*/
+        /*System.out.println(retiPN.size());
         boolean b = retiPN.save(0, "prova1");
         System.out.println(b);*/
 
@@ -99,11 +110,13 @@ public class DABUTTARE
         /*---------------------------------------------------------
         * test import rete PN*/
 
-        NetRepository retiPN = new RepositoryPN();
+        /*NetRepository retiPN = new RepositoryPN();
         boolean b = retiPN.importRete("/Users/davide/Desktop/prova1.json");
         System.out.println(b);
         System.out.println(retiPN.size());
+        Rete r = retiPN.getRete(0);
+        System.out.println("Marcatura posto "+((PostoPN)r.getElement(1).getPosto()).getMarcatura());
         boolean b1 = retiPN.save(0, "prova1");
-        System.out.println(b1);
+        System.out.println(b1);*/
     }
 }
