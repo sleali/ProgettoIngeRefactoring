@@ -5,6 +5,7 @@ public class Rete
     private ArrayList<Elemento> elementi;
     private ArrayList<Posto> posti;
     private ArrayList<Transizione> transazioni;
+
     public Rete()
     {
 

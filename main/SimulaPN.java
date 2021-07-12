@@ -4,6 +4,10 @@ public class SimulaPN implements SimulaRete
 {
     private Rete rete;
 
+    public Rete getRete(){
+        return this.rete;
+    }
+
     public SimulaPN(Rete r)
     {
         this.rete = r;
@@ -16,24 +20,21 @@ public class SimulaPN implements SimulaRete
         ElementoPN elPN;
         PostoPN pPNAux;
         int marcatura, peso;
-        for(int i = 0; i < this.rete.TransizioniSize(); i++)
-        {
+        for(int i = 0; i < this.rete.TransizioniSize(); i++) {
             tN = (TransizioneN) this.rete.getTransizione(i);
-            boolean abil=true;
-            for(int k = 0; k < this.rete.size(); k++)
-            {
+            boolean abil = true;
+            for (int k = 0; k < this.rete.size(); k++) {
                 elPN = (ElementoPN) this.rete.getElement(k);
                 pPNAux = (PostoPN) elPN.getPosto();
                 tNAux = (TransizioneN) elPN.getTransazione();
-                if(elPN.getVerso() && tN.getID() == tNAux.getID())
-                {
+                if (elPN.getVerso() && tN.getID() == tNAux.getID()) {
                     marcatura = pPNAux.getMarcatura();
                     peso = elPN.getPeso();
-                    if(marcatura-peso<0)
-                        abil=false;
+                    if (marcatura - peso < 0)
+                        abil = false;
                 }
             }
-            if(abil)
+            if (abil)
                 transizioniAbil.add(tN);
         }
         return transizioniAbil;

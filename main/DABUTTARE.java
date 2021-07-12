@@ -1,69 +1,15 @@
-import java.io.File;
+import java.util.ArrayList;
 
 public class DABUTTARE
 {
-
     public static void main(String[] args)
     {
-        /*NetRepository retiN = new RepositoryN();
-        PersistentManager m = new JsonManagerN();
-        Rete r = m.load("/Users/davide/Desktop/prova1.json");
-        retiN.add(r);
-        System.out.println(retiN.size());
-        boolean b = retiN.save(0, "prova1");
-        System.out.println(b);
-
-        /*------------------------------------------------------
-        * test rete N*/
-
-        /*Rete r = new Rete();
-        FactoryElementoN factory = new FactoryElementoN(r);
-
-
-        PostoN p1 = new PostoN(1);
-        r.addPosto(p1); //fatto da configuratore (controller)
-
-        TransizioneN t1 = new TransizioneN(1);
-        r.addTransizione(t1);
-
-        ElementoN e1 = factory.createElemento(0, 0, true);
-        r.addElemento(e1);
-
-
-        PostoN p2 = new PostoN(2);
-        r.addPosto(p2); //fatto da configuratore (controller)
-
-        TransizioneN t2 = new TransizioneN(2);
-        r.addTransizione(t2);
-
-        ElementoN e2 = factory.createElemento(1, 1, true);
-        r.addElemento(e2);
-
-
-        PostoN p3 = new PostoN(3);
-        r.addPosto(p3); //fatto da configuratore (controller)
-
-        ElementoN e3 = factory.createElemento(2, 1, false);
-        r.addElemento(e3);
-
-        System.out.println(r.addElemento(e3));
-
-        retiN.add(r);
-        System.out.println(retiN.size());
-        boolean b = retiN.save(0, "prova1");
-        System.out.println(b);*/
-
-        /*------------------------------------------------------/
-
-        /*------------------------------------------------------
-        * test rete PN*/
-
-        NetRepository retiPN = new RepositoryPN();
+        /*NetRepository retiPN = new RepositoryPN();
         Rete r = new Rete();
         FactoryElementoPN factory = new FactoryElementoPN(r);
 
 
-        PostoPN p1 = new PostoPN(1, 1);
+        PostoPN p1 = new PostoPN(1, 3);
         r.addPosto(p1); //fatto da configuratore (controller)
 
         TransizioneN t1 = new TransizioneN(1);
@@ -82,41 +28,67 @@ public class DABUTTARE
         ElementoPN e2 = factory.createElemento(1, 1, true, 2);
         r.addElemento(e2);
 
-
         PostoPN p3 = new PostoPN(3, 3);
         r.addPosto(p3); //fatto da configuratore (controller)
 
         ElementoPN e3 = factory.createElemento(2, 1, false, 3);
         r.addElemento(e3);
 
+        ElementoPN e4 = factory.createElemento(2, 1, false, 1);
+        r.addElemento(e4);
+
         System.out.println(r.addElemento(e3));
 
         retiPN.add(r);
-
-        String fileName = "/Users/davide/IdeaProjects/ProgettoIngeRefactoring/salvataggi/retiPN/prova1.json";
-        File f = new File(fileName);
-        /*ElementoPN el;
-        for(int i = 0; i < r.size(); i++)
-        {
-            el = (ElementoPN) r.getElement(i);
-            JsonPN.writeElemento(el, f);
-        }*/
-        /*System.out.println(retiPN.size());
-        boolean b = retiPN.save(0, "prova1");
-        System.out.println(b);*/
-
-        /*---------------------------------------------------------*/
-
-        /*---------------------------------------------------------
-        * test import rete PN*/
-
-        /*NetRepository retiPN = new RepositoryPN();
-        boolean b = retiPN.importRete("/Users/davide/Desktop/prova1.json");
-        System.out.println(b);
         System.out.println(retiPN.size());
-        Rete r = retiPN.getRete(0);
-        System.out.println("Marcatura posto "+((PostoPN)r.getElement(1).getPosto()).getMarcatura());
-        boolean b1 = retiPN.save(0, "prova1");
-        System.out.println(b1);*/
+        boolean b = retiPN.save(0, "provaSimula");
+        System.out.println(b);
+        */
+
+        NetRepository retiPNp = new RepositoryPNp();
+        boolean b = retiPNp.importRete("/Users/mirkoglisenti/Desktop/ProgettoInge/ProgettoIngeRefactoring/salvataggi/retiPNP/prova1.json");
+        System.out.println("IMPORT: "+b);
+        System.out.println("SIZE: " + retiPNp.size());
+        Rete rete = retiPNp.getRete(0);
+        SimulaPNP simula = new SimulaPNP(rete);
+        ArrayList<TransizionePNp> abil;
+        int i = 1;
+        do{
+            abil = simula.transizioniAbilitatePriority();
+            System.out.println("CICLO "+i);
+            System.out.println("ABILITATE: "+abil.size());
+            switch (abil.size()) {
+                case 0:
+                    System.out.println("DEADLOCK");
+                    break;
+                case 1:
+                    simula.scattaTransizione(abil.get(0));
+                    statoRete(simula.getRete());
+                    break;
+                default:
+                    simula.scattaTransizione(scegliTransizione(abil));
+                    statoRete(simula.getRete());
+                    break;
+            }
+            i++;
+        }while(abil.size() != 0);
+    }
+
+    public static TransizionePNp scegliTransizione(ArrayList<TransizionePNp> abil){
+        for(TransizionePNp t : abil){
+            System.out.println(t.getID());
+        }
+        return abil.get(0);
+    }
+
+    public static void statoRete(Rete r)
+    {
+        int n = r.postiSize();
+        PostoPN pn;
+        for(int i = 0; i < n; i++)
+        {
+            pn = (PostoPN) r.getPosto(i);
+            System.out.println("ID Posto: "+pn.getID()+"\nMarcatura Posto: "+pn.getMarcatura()+"\n\n");
+        }
     }
 }
