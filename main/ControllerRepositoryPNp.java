@@ -70,4 +70,9 @@ public class ControllerRepositoryPNp
         ViewRetePNp view = new ViewRetePNp(r);
         return view.toString();
     }
+
+    public Rete getRete(int index)
+    {
+        return this.repo.getRete(index);
+    }
 }

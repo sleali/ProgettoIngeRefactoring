@@ -40,7 +40,7 @@ public class SimulaPN implements SimulaRete
         return transizioniAbil;
     }
 
-    public void scattaTransizione(TransizioneN trans)
+    public int scattaTransizione(TransizioneN trans)
     {
         int marcaturaNew;
         ElementoPN elPN;
@@ -88,7 +88,7 @@ public class SimulaPN implements SimulaRete
             }
         }
 
-        //updateRete();
+        return trans.getID();
     }
 
     // Metodo per ritornare solo i posti che fanno parte dei predecessori e non dei successori

@@ -5,6 +5,8 @@ public class ViewRetePN extends ViewRete
         super(rete);
     }
 
+
+
     @Override
     public String toStringPosto(int index)
     {

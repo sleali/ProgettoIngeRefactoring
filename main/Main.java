@@ -15,7 +15,7 @@ public class Main
                     break;
                 case 2:
                     System.out.println("\n");
-                    //fruitore();
+                    fruitore();
                     break;
                 default:
                     System.out.println("\n");
@@ -56,5 +56,29 @@ public class Main
         while (scelta != 0);
     }
 
-
+    public static void fruitore() throws Exception
+    {
+        int scelta = 0;
+        ControllerRepositoryPN repoPN = new ControllerRepositoryPN();
+        ControllerRepositoryPNp repoPNp = new ControllerRepositoryPNp();
+        do
+        {
+            System.out.println("Menu principale [utente: fruitore]\n1) Simula reti PN \n2) Simula reti PNp \n\n0) Esci");
+            scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 2);
+            switch (scelta)
+            {
+                case 1:
+                    System.out.println("\n");
+                    Main_simula_PN.simula(repoPN);
+                    break;
+                case 2:
+                    Main_simula_PNp.simula(repoPNp);
+                    break;
+                default:
+                    System.out.println("Uscita in corso...");
+                    break;
+            }
+        }
+        while (scelta != 0);
+    }
 }

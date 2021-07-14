@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class SimulaPNP implements SimulaRete
+public class SimulaPNp implements SimulaRete
 {
     private Rete rete;
 
@@ -8,12 +8,12 @@ public class SimulaPNP implements SimulaRete
         return this.rete;
     }
 
-    public SimulaPNP(Rete r)
+    public SimulaPNp(Rete r)
     {
         this.rete = r;
     }
 
-    private ArrayList<TransizionePNp> transizioniAbilitate()
+    public ArrayList<TransizionePNp> transizioniAbilitate()
     {
         ArrayList<TransizionePNp> transizioniAbil = new ArrayList<>();
         TransizionePNp tN, tNAux;
@@ -55,7 +55,7 @@ public class SimulaPNP implements SimulaRete
         return transizioniAbil;
     }
 
-    public void scattaTransizione(TransizionePNp trans)
+    public int scattaTransizione(TransizionePNp trans)
     {
         int marcaturaNew;
         ElementoPNp elPN;
@@ -103,7 +103,7 @@ public class SimulaPNP implements SimulaRete
             }
         }
 
-        //updateRete();
+        return trans.getID();
     }
 
     // Metodo per ritornare solo i posti che fanno parte dei predecessori e non dei successori
