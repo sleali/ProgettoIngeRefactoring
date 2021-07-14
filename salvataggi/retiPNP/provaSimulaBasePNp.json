@@ -1,0 +1,4 @@
+{"peso":1,"verso":true,"p":{"marcatura":3,"ID":1},"t":{"priorita":2,"ID":1}}
+{"peso":2,"verso":true,"p":{"marcatura":2,"ID":2},"t":{"priorita":1,"ID":2}}
+{"peso":1,"verso":false,"p":{"marcatura":3,"ID":3},"t":{"priorita":2,"ID":1}}
+{"peso":2,"verso":false,"p":{"marcatura":3,"ID":3},"t":{"priorita":1,"ID":2}}

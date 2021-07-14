@@ -13,7 +13,7 @@ public class SimulaPNp implements SimulaRete
         this.rete = r;
     }
 
-    public ArrayList<TransizionePNp> transizioniAbilitate()
+    private ArrayList<TransizionePNp> transizioniAbilitate()
     {
         ArrayList<TransizionePNp> transizioniAbil = new ArrayList<>();
         TransizionePNp tN, tNAux;

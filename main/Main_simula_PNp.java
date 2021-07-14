@@ -20,7 +20,7 @@ public class Main_simula_PNp {
         ViewRetePNp view = new ViewRetePNp(sim.getRete());
 
         do {
-            abil = sim.transizioniAbilitate();
+            abil = sim.transizioniAbilitatePriority();
             switch(abil.size()) {
                 case 0:
                     System.out.println("DEADLOCK\n");
