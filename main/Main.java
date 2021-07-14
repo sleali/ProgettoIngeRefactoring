@@ -1,6 +1,6 @@
 public class Main
 {
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
         int scelta = 0;
         do
@@ -26,7 +26,7 @@ public class Main
         while (scelta != 0);
     }
 
-    public static void configuratore() throws Exception
+    public static void configuratore()
     {
         int scelta = 0;
         ControllerRepositoryN repoN = new ControllerRepositoryN();
@@ -56,7 +56,7 @@ public class Main
         while (scelta != 0);
     }
 
-    public static void fruitore() throws Exception
+    public static void fruitore()
     {
         int scelta = 0;
         ControllerRepositoryPN repoPN = new ControllerRepositoryPN();
