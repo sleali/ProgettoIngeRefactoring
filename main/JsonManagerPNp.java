@@ -1,6 +1,3 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,9 +15,9 @@ public class JsonManagerPNp extends PersistentManager
     }
 
     @Override
-    public boolean save(Rete r, String fileName)
+    public String save(Rete r, String fileName)
     {
-        boolean save = false;
+        String fileNameSaved = null;
         if (r.size() > 0) {
             try {
                 File f = new File(fileName + ".json");
@@ -37,12 +34,12 @@ public class JsonManagerPNp extends PersistentManager
                     pw.println(jsonString);
                 }
                 pw.close();
-                save = true;
+                fileNameSaved = f.getName();
             } catch (Exception exp) {
                 exp.printStackTrace();
             }
         }
-        return save;
+        return fileNameSaved;
     }
 
     @Override

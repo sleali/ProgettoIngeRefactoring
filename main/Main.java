@@ -1,6 +1,60 @@
-public class Main {
-    public static void main(String[] args){
-        ControllerMVC application = new ControllerMVC(new ViewShell());
-        application.startView();
+public class Main
+{
+    public static void main(String[] args) throws Exception
+    {
+        int scelta = 0;
+        do
+        {
+            System.out.println("Menu principale\n1) Configuratore \n2) Fruitore \n\n0) Esci");
+            scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 2);
+            switch (scelta)
+            {
+                case 1:
+                    System.out.println("\n");
+                    configuratore();
+                    break;
+                case 2:
+                    System.out.println("\n");
+                    //fruitore();
+                    break;
+                default:
+                    System.out.println("\n");
+                    System.out.println("Uscita in corso...");
+                    break;
+            }
+        }
+        while (scelta != 0);
     }
+
+    public static void configuratore() throws Exception
+    {
+        int scelta = 0;
+        ControllerRepositoryN repoN = new ControllerRepositoryN();
+        ControllerRepositoryPN repoPN = new ControllerRepositoryPN();
+        ControllerRepositoryPNp repoPNp = new ControllerRepositoryPNp();
+        do
+        {
+            System.out.println("Menu principale [utente: configuratore]\n1) Gestione reti N \n2) Gestione reti PN \n3) Gestione reti PNP\n\n0) Esci");
+            scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 3);
+            switch (scelta)
+            {
+                case 1:
+                    System.out.println("\n");
+                    Main_reti_N.reti_N(repoN);
+                    break;
+                case 2:
+                    Main_rete_PN.reti_PN(repoN, repoPN);
+                    break;
+                case 3:
+                    Main_rete_PNp.reti_PNp(repoPN, repoPNp);
+                    break;
+                default:
+                    System.out.println("Uscita in corso...");
+                    break;
+            }
+        }
+        while (scelta != 0);
+    }
+
+
 }

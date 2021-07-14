@@ -90,7 +90,7 @@ public class Rete
         return this.posti.size();
     }
 
-    public int TransizioniSize()
+    public int transizioniSize()
     {
         return this.transazioni.size();
     }
@@ -158,6 +158,8 @@ public class Rete
         Rete rPN = new Rete();
         ElementoN elN;
         ElementoPN elPN;
+        PostoPN p;
+        TransizioneN t;
         for(int i = 0; i < this.size(); i++)
         {
             elN = (ElementoN) this.getElement(i);
@@ -176,7 +178,7 @@ public class Rete
         {
             elPN = (ElementoPN) this.getElement(i);
             elPNp = elPN.convertToElementoPNp(priorita[i]);
-            rPNp.addElemento(elPN);
+            rPNp.addElemento(elPNp);
         }
         return rPNp;
     }

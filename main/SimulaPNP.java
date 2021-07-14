@@ -20,7 +20,7 @@ public class SimulaPNP implements SimulaRete
         ElementoPNp elPN;
         PostoPN pPNAux;
         int marcatura, peso;
-        for(int i = 0; i < this.rete.TransizioniSize(); i++) {
+        for(int i = 0; i < this.rete.transizioniSize(); i++) {
             tN = (TransizionePNp) this.rete.getTransizione(i);
             boolean abil = true;
             for (int k = 0; k < this.rete.size(); k++) {

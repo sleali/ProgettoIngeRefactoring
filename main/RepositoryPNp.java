@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 
-public class RepositoryPNp implements NetRepository
+public class RepositoryPNp extends NetRepository
 {
     private static final String DIRECTORY = "./salvataggi/retiPNP/";
 
@@ -13,7 +13,9 @@ public class RepositoryPNp implements NetRepository
     {
         retiPNp = new ArrayList<Rete>();
         persistentManager = new JsonManagerPNp();
+        fileNames = new ArrayList<>();
         this.checkDirectory();
+        this.loadAllDirectory();
     }
 
     @Override
@@ -34,18 +36,21 @@ public class RepositoryPNp implements NetRepository
     }
 
     @Override
-    public boolean save(int index, String fileName)
+    public String save(int index, String fileName)
     {
-        boolean saved = false;
+        String saved;
         Rete r = this.getRete(index);
         saved = this.persistentManager.save(r, DIRECTORY + fileName);
+        if(saved != null)
+            this.fileNames.add(saved);
         return saved;
     }
 
     @Override
-    public boolean load(String fileName)
+    public boolean load(int index)
     {
         boolean loaded = false;
+        String fileName = this.fileNames.get(index);
         Rete r = this.persistentManager.load(DIRECTORY + fileName);
         if(r != null)
         {
@@ -111,5 +116,37 @@ public class RepositoryPNp implements NetRepository
             directory.mkdir();
         if (!directoryPN.isDirectory())
             directoryPN.mkdir();
+    }
+
+    private void loadFileNames()
+    {
+        File dir = new File(DIRECTORY);
+        String names[] = dir.list(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                boolean value;
+                // return files only that begins with test
+                if(name.startsWith(".")){
+                    value=false;
+                }
+                else{
+                    value=true;
+                }
+                return value;
+            }
+        });
+        for (int i = 0; i < names.length; i++)
+        {
+            this.fileNames.add(names[i]);
+        }
+    }
+
+    private void loadAllDirectory()
+    {
+        loadFileNames();
+        for(int i = 0; i < fileNamesSize(); i++)
+        {
+            this.load(i);
+        }
     }
 }

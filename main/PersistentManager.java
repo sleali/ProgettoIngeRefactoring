@@ -28,5 +28,5 @@ public abstract class PersistentManager
         return r;
     }
     protected abstract Elemento getElementFromJson(String s);
-    public abstract boolean save(Rete r, String fileName);
+    public abstract String save(Rete r, String fileName);
 }
