@@ -5,7 +5,7 @@ public class Main_reti_N
         int scelta = 0;
         do
         {
-            System.out.println("Menu principale reti N [utente: configuratore]\n1) Inserimento nuova rete \n2) Visualizzazione reti \n3) Importa rete \n\n0) Esci");
+            System.out.println("Menu principale reti N [utente: configuratore]\n1) Inserimento nuova rete \n2) Visualizzazione reti \n3) Importa rete \n\n0) Esci ");
             scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 3);
             switch (scelta)
             {
